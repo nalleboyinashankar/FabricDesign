@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b61e134a909644f296c4b8d72d5cb525" Name="Diagram1" ZoomLevel="74">
+        <EntityTypeShape EntityType="Fabric_DesignModel.AspNetUser" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Fabric_DesignModel.Buyer" Width="1.5" PointX="5.25" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Fabric_DesignModel.ClassType" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Fabric_DesignModel.CountryCurrency" Width="1.5" PointX="3" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Fabric_DesignModel.FactoryList" Width="1.5" PointX="8.25" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Fabric_DesignModel.LookUp" Width="1.5" PointX="3" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Fabric_DesignModel.TypeCdDmt" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
+        <AssociationConnector Association="Fabric_DesignModel.FK__CountryCu__Creat__34C8D9D1" ManuallyRouted="false" />
+        <AssociationConnector Association="Fabric_DesignModel.FK__CountryCu__Updat__35BCFE0A" ManuallyRouted="false" />
+        <AssociationConnector Association="Fabric_DesignModel.FK__FactoryLi__Creat__5441852A" ManuallyRouted="false" />
+        <AssociationConnector Association="Fabric_DesignModel.FK__FactoryLi__Updat__5535A963" ManuallyRouted="false" />
+        <AssociationConnector Association="Fabric_DesignModel.FK__Buyer__BuyingHou__398D8EEE" ManuallyRouted="false" />
+        <AssociationConnector Association="Fabric_DesignModel.FK__Buyer__Commissio__3A81B327" ManuallyRouted="false" />
+        <AssociationConnector Association="Fabric_DesignModel.FK__Buyer__Countryid__38996AB5" ManuallyRouted="false" />
+        <AssociationConnector Association="Fabric_DesignModel.FK__CountryCu__Curre__33D4B598" ManuallyRouted="false" />
+        <AssociationConnector Association="Fabric_DesignModel.FK__FactoryLi__Count__534D60F1" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="Fabric_DesignModel.StyleMarchantXref" Width="1.5" PointX="15.75" PointY="8.5" />
+        <EntityTypeShape EntityType="Fabric_DesignModel.StyleMaterImage" Width="1.5" PointX="12.75" PointY="7.625" />
+        <AssociationConnector Association="Fabric_DesignModel.FK__StyleMarc__March__5EBF139D" />
+        <AssociationConnector Association="Fabric_DesignModel.FK__StyleMate__Creat__628FA481" />
+        <AssociationConnector Association="Fabric_DesignModel.FK__StyleMate__Updat__6383C8BA" />
+        <EntityTypeShape EntityType="Fabric_DesignModel.StateMaster" Width="1.5" PointX="5.25" PointY="2.75" />
+        <AssociationConnector Association="Fabric_DesignModel.FK__StateMast__Creat__4E88ABD4" />
+        <AssociationConnector Association="Fabric_DesignModel.FK__StateMast__Updat__4F7CD00D" />
+        <AssociationConnector Association="Fabric_DesignModel.FK__StateMast__Count__4D94879B" />
+        <AssociationConnector Association="Fabric_DesignModel.FK__FactoryLi__State__52593CB8" />
+        <EntityTypeShape EntityType="Fabric_DesignModel.StyleMaster" Width="1.5" PointX="10.5" PointY="2.75" />
+        <AssociationConnector Association="Fabric_DesignModel.FK__StyleMast__Creat__4316F928" />
+        <AssociationConnector Association="Fabric_DesignModel.FK__StyleMast__Fabri__46E78A0C" />
+        <AssociationConnector Association="Fabric_DesignModel.FK__StyleMast__March__3E52440B" />
+        <AssociationConnector Association="Fabric_DesignModel.FK__StyleMast__Updat__440B1D61" />
+        <AssociationConnector Association="Fabric_DesignModel.FK__StyleMast__Buyer__3F466844" />
+        <AssociationConnector Association="Fabric_DesignModel.FK__StyleMast__Garme__412EB0B6" />
+        <AssociationConnector Association="Fabric_DesignModel.FK__StyleMast__Seaso__403A8C7D" />
+        <AssociationConnector Association="Fabric_DesignModel.FK__StyleMarc__Style__5FB337D6" />
+        <AssociationConnector Association="Fabric_DesignModel.FK__StyleMast__Garme__47DBAE45" />
+        <AssociationConnector Association="Fabric_DesignModel.FK__StyleMast__Order__44FF419A" />
+        <AssociationConnector Association="Fabric_DesignModel.FK__StyleMast__Sampl__4222D4EF" />
+        <AssociationConnector Association="Fabric_DesignModel.FK__StyleMast__Sampl__45F365D3" />
+        <AssociationConnector Association="Fabric_DesignModel.FK__StyleMate__Style__6477ECF3" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

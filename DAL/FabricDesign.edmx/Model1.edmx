@@ -1,0 +1,2054 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Fabric_DesignModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="AlternateMobileNumber" Type="nvarchar(max)" />
+          <Property Name="DepartmentId" Type="int" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="AccessFailedCount" Type="int" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="ReportingManager" Type="nvarchar(max)" />
+          <Property Name="CreatedBy" Type="nvarchar(max)" />
+          <Property Name="UpdatedBy" Type="nvarchar(max)" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
+          <Property Name="FactoryId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Buyer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BuyerName" Type="varchar" MaxLength="250" />
+          <Property Name="Countryid" Type="int" />
+          <Property Name="CreatedBy" Type="nvarchar(max)" />
+          <Property Name="UpdatedBy" Type="nvarchar(max)" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="UpdatedDate" Type="datetime" />
+          <Property Name="BuyingHouseId" Type="int" />
+          <Property Name="CommissionTypeId" Type="int" />
+          <Property Name="CommissionPercentage" Type="float" />
+        </EntityType>
+        <EntityType Name="ClassType">
+          <Key>
+            <PropertyRef Name="ClassTypeId" />
+          </Key>
+          <Property Name="ClassTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedbyUserId" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="UPdatedbyUserId" Type="int" />
+          <Property Name="UPdatedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CountryCurrency">
+          <Key>
+            <PropertyRef Name="CountryId" />
+          </Key>
+          <Property Name="CountryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CountryName" Type="varchar" MaxLength="250" />
+          <Property Name="CountryCode" Type="varchar" MaxLength="250" />
+          <Property Name="CurrencyType" Type="int" />
+          <Property Name="ConversionRate" Type="varchar" MaxLength="250" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="CreatedByUserId" Type="nvarchar" MaxLength="128" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="UpdatedByUserId" Type="nvarchar" MaxLength="128" />
+          <Property Name="UpdatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="FactoryList">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FactoryName" Type="nvarchar" MaxLength="255" />
+          <Property Name="City" Type="nvarchar" MaxLength="125" />
+          <Property Name="State" Type="int" />
+          <Property Name="Country" Type="int" />
+          <Property Name="CreatedByUserId" Type="nvarchar" MaxLength="128" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="UpdatedByUserId" Type="nvarchar" MaxLength="128" />
+          <Property Name="UpdatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="LookUp">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LookUpId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Remarks" Type="varchar" MaxLength="1000" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedByUserId" Type="nvarchar" MaxLength="128" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedByUserId" Type="nvarchar" MaxLength="128" />
+          <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StateMaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CountryId" Type="int" />
+          <Property Name="State" Type="nvarchar" MaxLength="125" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedByUserId" Type="nvarchar" MaxLength="128" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="UpdatedByUserId" Type="nvarchar" MaxLength="128" />
+          <Property Name="UpdatedDate" Type="datetime" />
+          <Property Name="IGST" Type="nvarchar" MaxLength="128" />
+          <Property Name="SGST" Type="nvarchar" MaxLength="128" />
+          <Property Name="CGST" Type="nvarchar" MaxLength="128" />
+          <Property Name="Statecode" Type="nvarchar" MaxLength="128" />
+        </EntityType>
+        <EntityType Name="StyleMarchantXref">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MarchantId" Type="nvarchar" MaxLength="128" />
+          <Property Name="StyleMasterId" Type="int" />
+        </EntityType>
+        <EntityType Name="StyleMaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BuyerStyleNumber" Type="varchar" MaxLength="123" Nullable="false" />
+          <Property Name="MarchantId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="BuyerId" Type="int" Nullable="false" />
+          <Property Name="SeasonTypeId" Type="int" Nullable="false" />
+          <Property Name="GarmentTypeId" Type="int" Nullable="false" />
+          <Property Name="SampleTypeId" Type="int" />
+          <Property Name="TechPackName" Type="varchar" MaxLength="100" />
+          <Property Name="Description" Type="varchar" MaxLength="100" />
+          <Property Name="FileName" Type="varchar" MaxLength="255" />
+          <Property Name="FileLocation" Type="varchar" MaxLength="255" />
+          <Property Name="FileExtension" Type="varchar" MaxLength="255" />
+          <Property Name="NumberofPcs" Type="int" />
+          <Property Name="SampleSubmissionDate" Type="datetime" />
+          <Property Name="ExpectedOrderQty" Type="int" />
+          <Property Name="ExpectedOrderDate" Type="datetime" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="128" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="nvarchar" MaxLength="128" />
+          <Property Name="TechPackSampleReceivedDate" Type="datetime" />
+          <Property Name="OrderTypeId" Type="int" />
+          <Property Name="SamplingStatusId" Type="int" />
+          <Property Name="FabricManagerId" Type="nvarchar" MaxLength="128" />
+          <Property Name="GarmentProcessId" Type="int" />
+          <Property Name="CostingVersionId" Type="varchar" MaxLength="200" />
+          <Property Name="NoOfSamplesSentToBuyer" Type="float" />
+          <Property Name="NoOfSamplesPaidFor" Type="float" />
+          <Property Name="CostPerSample" Type="float" />
+          <Property Name="UpdatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="StyleMaterImages">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FileName" Type="nvarchar" MaxLength="128" />
+          <Property Name="FileLocation" Type="nvarchar" MaxLength="128" />
+          <Property Name="FileExtension" Type="nvarchar" MaxLength="128" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="CreatedBY" Type="nvarchar" MaxLength="128" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="nvarchar" MaxLength="128" />
+          <Property Name="UpdatedDate" Type="datetime" />
+          <Property Name="BuyerStyleNumber" Type="int" />
+          <Property Name="StyleId" Type="int" />
+        </EntityType>
+        <EntityType Name="TypeCdDmt">
+          <Key>
+            <PropertyRef Name="TypeCdId" />
+          </Key>
+          <Property Name="TypeCdId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClassTypeId" Type="int" />
+          <Property Name="Desc" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="TableName" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="ColumnName" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="SortOrder" Type="int" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedByUserId" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedByUserId" Type="int" />
+          <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Buyer__BuyingHou__398D8EEE">
+          <End Role="LookUp" Type="Self.LookUp" Multiplicity="0..1" />
+          <End Role="Buyer" Type="Self.Buyer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LookUp">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Buyer">
+              <PropertyRef Name="BuyingHouseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Buyer__BuyingHou__6D0D32F4">
+          <End Role="LookUp" Type="Self.LookUp" Multiplicity="0..1" />
+          <End Role="Buyer" Type="Self.Buyer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LookUp">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Buyer">
+              <PropertyRef Name="BuyingHouseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Buyer__Commissio__3A81B327">
+          <End Role="TypeCdDmt" Type="Self.TypeCdDmt" Multiplicity="0..1" />
+          <End Role="Buyer" Type="Self.Buyer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeCdDmt">
+              <PropertyRef Name="TypeCdId" />
+            </Principal>
+            <Dependent Role="Buyer">
+              <PropertyRef Name="CommissionTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Buyer__Commissio__6E01572D">
+          <End Role="TypeCdDmt" Type="Self.TypeCdDmt" Multiplicity="0..1" />
+          <End Role="Buyer" Type="Self.Buyer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeCdDmt">
+              <PropertyRef Name="TypeCdId" />
+            </Principal>
+            <Dependent Role="Buyer">
+              <PropertyRef Name="CommissionTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Buyer__Countryid__38996AB5">
+          <End Role="CountryCurrency" Type="Self.CountryCurrency" Multiplicity="0..1" />
+          <End Role="Buyer" Type="Self.Buyer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CountryCurrency">
+              <PropertyRef Name="CountryId" />
+            </Principal>
+            <Dependent Role="Buyer">
+              <PropertyRef Name="Countryid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Buyer__Countryid__6EF57B66">
+          <End Role="CountryCurrency" Type="Self.CountryCurrency" Multiplicity="0..1" />
+          <End Role="Buyer" Type="Self.Buyer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CountryCurrency">
+              <PropertyRef Name="CountryId" />
+            </Principal>
+            <Dependent Role="Buyer">
+              <PropertyRef Name="Countryid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CountryCu__Creat__34C8D9D1">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+          <End Role="CountryCurrency" Type="Self.CountryCurrency" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CountryCurrency">
+              <PropertyRef Name="CreatedByUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CountryCu__Curre__33D4B598">
+          <End Role="TypeCdDmt" Type="Self.TypeCdDmt" Multiplicity="0..1" />
+          <End Role="CountryCurrency" Type="Self.CountryCurrency" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeCdDmt">
+              <PropertyRef Name="TypeCdId" />
+            </Principal>
+            <Dependent Role="CountryCurrency">
+              <PropertyRef Name="CurrencyType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CountryCu__Updat__35BCFE0A">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+          <End Role="CountryCurrency" Type="Self.CountryCurrency" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CountryCurrency">
+              <PropertyRef Name="UpdatedByUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FactoryLi__Count__534D60F1">
+          <End Role="CountryCurrency" Type="Self.CountryCurrency" Multiplicity="0..1" />
+          <End Role="FactoryList" Type="Self.FactoryList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CountryCurrency">
+              <PropertyRef Name="CountryId" />
+            </Principal>
+            <Dependent Role="FactoryList">
+              <PropertyRef Name="Country" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FactoryLi__Creat__5441852A">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+          <End Role="FactoryList" Type="Self.FactoryList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FactoryList">
+              <PropertyRef Name="CreatedByUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FactoryLi__State__52593CB8">
+          <End Role="StateMaster" Type="Self.StateMaster" Multiplicity="0..1" />
+          <End Role="FactoryList" Type="Self.FactoryList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StateMaster">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FactoryList">
+              <PropertyRef Name="State" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FactoryLi__Updat__5535A963">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+          <End Role="FactoryList" Type="Self.FactoryList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FactoryList">
+              <PropertyRef Name="UpdatedByUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StateMast__Count__4D94879B">
+          <End Role="CountryCurrency" Type="Self.CountryCurrency" Multiplicity="0..1" />
+          <End Role="StateMaster" Type="Self.StateMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CountryCurrency">
+              <PropertyRef Name="CountryId" />
+            </Principal>
+            <Dependent Role="StateMaster">
+              <PropertyRef Name="CountryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StateMast__Creat__4E88ABD4">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+          <End Role="StateMaster" Type="Self.StateMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StateMaster">
+              <PropertyRef Name="CreatedByUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StateMast__Updat__4F7CD00D">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+          <End Role="StateMaster" Type="Self.StateMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StateMaster">
+              <PropertyRef Name="UpdatedByUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StyleMarc__March__5EBF139D">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+          <End Role="StyleMarchantXref" Type="Self.StyleMarchantXref" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StyleMarchantXref">
+              <PropertyRef Name="MarchantId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StyleMarc__Style__5FB337D6">
+          <End Role="StyleMaster" Type="Self.StyleMaster" Multiplicity="0..1" />
+          <End Role="StyleMarchantXref" Type="Self.StyleMarchantXref" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StyleMaster">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StyleMarchantXref">
+              <PropertyRef Name="StyleMasterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StyleMast__Buyer__3F466844">
+          <End Role="Buyer" Type="Self.Buyer" Multiplicity="1" />
+          <End Role="StyleMaster" Type="Self.StyleMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Buyer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StyleMaster">
+              <PropertyRef Name="BuyerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StyleMast__Creat__4316F928">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+          <End Role="StyleMaster" Type="Self.StyleMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StyleMaster">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StyleMast__Fabri__46E78A0C">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+          <End Role="StyleMaster" Type="Self.StyleMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StyleMaster">
+              <PropertyRef Name="FabricManagerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StyleMast__Garme__412EB0B6">
+          <End Role="LookUp" Type="Self.LookUp" Multiplicity="1" />
+          <End Role="StyleMaster" Type="Self.StyleMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LookUp">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StyleMaster">
+              <PropertyRef Name="GarmentTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StyleMast__Garme__47DBAE45">
+          <End Role="TypeCdDmt" Type="Self.TypeCdDmt" Multiplicity="0..1" />
+          <End Role="StyleMaster" Type="Self.StyleMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeCdDmt">
+              <PropertyRef Name="TypeCdId" />
+            </Principal>
+            <Dependent Role="StyleMaster">
+              <PropertyRef Name="GarmentProcessId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StyleMast__March__3E52440B">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="StyleMaster" Type="Self.StyleMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StyleMaster">
+              <PropertyRef Name="MarchantId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StyleMast__Order__44FF419A">
+          <End Role="TypeCdDmt" Type="Self.TypeCdDmt" Multiplicity="0..1" />
+          <End Role="StyleMaster" Type="Self.StyleMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeCdDmt">
+              <PropertyRef Name="TypeCdId" />
+            </Principal>
+            <Dependent Role="StyleMaster">
+              <PropertyRef Name="OrderTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StyleMast__Sampl__4222D4EF">
+          <End Role="TypeCdDmt" Type="Self.TypeCdDmt" Multiplicity="0..1" />
+          <End Role="StyleMaster" Type="Self.StyleMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeCdDmt">
+              <PropertyRef Name="TypeCdId" />
+            </Principal>
+            <Dependent Role="StyleMaster">
+              <PropertyRef Name="SampleTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StyleMast__Sampl__45F365D3">
+          <End Role="TypeCdDmt" Type="Self.TypeCdDmt" Multiplicity="0..1" />
+          <End Role="StyleMaster" Type="Self.StyleMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeCdDmt">
+              <PropertyRef Name="TypeCdId" />
+            </Principal>
+            <Dependent Role="StyleMaster">
+              <PropertyRef Name="SamplingStatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StyleMast__Seaso__403A8C7D">
+          <End Role="LookUp" Type="Self.LookUp" Multiplicity="1" />
+          <End Role="StyleMaster" Type="Self.StyleMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LookUp">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StyleMaster">
+              <PropertyRef Name="SeasonTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StyleMast__Updat__440B1D61">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+          <End Role="StyleMaster" Type="Self.StyleMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StyleMaster">
+              <PropertyRef Name="UpdatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StyleMate__Creat__628FA481">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+          <End Role="StyleMaterImages" Type="Self.StyleMaterImages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StyleMaterImages">
+              <PropertyRef Name="CreatedBY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StyleMate__Style__6477ECF3">
+          <End Role="StyleMaster" Type="Self.StyleMaster" Multiplicity="0..1" />
+          <End Role="StyleMaterImages" Type="Self.StyleMaterImages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StyleMaster">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StyleMaterImages">
+              <PropertyRef Name="StyleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StyleMate__Updat__6383C8BA">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+          <End Role="StyleMaterImages" Type="Self.StyleMaterImages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StyleMaterImages">
+              <PropertyRef Name="UpdatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="Garmentprocesswithid" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="GarmentprocessId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetBuyer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetCountry" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetCountrySP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Getgarmenttypewithid" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetLookkupSP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetLookUp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetOrdertypewithid" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetSampletypewithid" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Getseasonwithid" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="LookUpId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetState" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetStyleMaster" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetStyleMasterData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetTypecddmt" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SP_GetUsers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="Fabric_DesignModelStoreContainer">
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Buyer" EntityType="Self.Buyer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClassType" EntityType="Self.ClassType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CountryCurrency" EntityType="Self.CountryCurrency" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FactoryList" EntityType="Self.FactoryList" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LookUp" EntityType="Self.LookUp" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StateMaster" EntityType="Self.StateMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StyleMarchantXref" EntityType="Self.StyleMarchantXref" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StyleMaster" EntityType="Self.StyleMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StyleMaterImages" EntityType="Self.StyleMaterImages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TypeCdDmt" EntityType="Self.TypeCdDmt" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Buyer__BuyingHou__398D8EEE" Association="Self.FK__Buyer__BuyingHou__398D8EEE">
+            <End Role="LookUp" EntitySet="LookUp" />
+            <End Role="Buyer" EntitySet="Buyer" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Buyer__BuyingHou__6D0D32F4" Association="Self.FK__Buyer__BuyingHou__6D0D32F4">
+            <End Role="LookUp" EntitySet="LookUp" />
+            <End Role="Buyer" EntitySet="Buyer" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Buyer__Commissio__3A81B327" Association="Self.FK__Buyer__Commissio__3A81B327">
+            <End Role="TypeCdDmt" EntitySet="TypeCdDmt" />
+            <End Role="Buyer" EntitySet="Buyer" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Buyer__Commissio__6E01572D" Association="Self.FK__Buyer__Commissio__6E01572D">
+            <End Role="TypeCdDmt" EntitySet="TypeCdDmt" />
+            <End Role="Buyer" EntitySet="Buyer" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Buyer__Countryid__38996AB5" Association="Self.FK__Buyer__Countryid__38996AB5">
+            <End Role="CountryCurrency" EntitySet="CountryCurrency" />
+            <End Role="Buyer" EntitySet="Buyer" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Buyer__Countryid__6EF57B66" Association="Self.FK__Buyer__Countryid__6EF57B66">
+            <End Role="CountryCurrency" EntitySet="CountryCurrency" />
+            <End Role="Buyer" EntitySet="Buyer" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CountryCu__Creat__34C8D9D1" Association="Self.FK__CountryCu__Creat__34C8D9D1">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="CountryCurrency" EntitySet="CountryCurrency" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CountryCu__Curre__33D4B598" Association="Self.FK__CountryCu__Curre__33D4B598">
+            <End Role="TypeCdDmt" EntitySet="TypeCdDmt" />
+            <End Role="CountryCurrency" EntitySet="CountryCurrency" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CountryCu__Updat__35BCFE0A" Association="Self.FK__CountryCu__Updat__35BCFE0A">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="CountryCurrency" EntitySet="CountryCurrency" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FactoryLi__Count__534D60F1" Association="Self.FK__FactoryLi__Count__534D60F1">
+            <End Role="CountryCurrency" EntitySet="CountryCurrency" />
+            <End Role="FactoryList" EntitySet="FactoryList" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FactoryLi__Creat__5441852A" Association="Self.FK__FactoryLi__Creat__5441852A">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="FactoryList" EntitySet="FactoryList" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FactoryLi__State__52593CB8" Association="Self.FK__FactoryLi__State__52593CB8">
+            <End Role="StateMaster" EntitySet="StateMaster" />
+            <End Role="FactoryList" EntitySet="FactoryList" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FactoryLi__Updat__5535A963" Association="Self.FK__FactoryLi__Updat__5535A963">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="FactoryList" EntitySet="FactoryList" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StateMast__Count__4D94879B" Association="Self.FK__StateMast__Count__4D94879B">
+            <End Role="CountryCurrency" EntitySet="CountryCurrency" />
+            <End Role="StateMaster" EntitySet="StateMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StateMast__Creat__4E88ABD4" Association="Self.FK__StateMast__Creat__4E88ABD4">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="StateMaster" EntitySet="StateMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StateMast__Updat__4F7CD00D" Association="Self.FK__StateMast__Updat__4F7CD00D">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="StateMaster" EntitySet="StateMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StyleMarc__March__5EBF139D" Association="Self.FK__StyleMarc__March__5EBF139D">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="StyleMarchantXref" EntitySet="StyleMarchantXref" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StyleMarc__Style__5FB337D6" Association="Self.FK__StyleMarc__Style__5FB337D6">
+            <End Role="StyleMaster" EntitySet="StyleMaster" />
+            <End Role="StyleMarchantXref" EntitySet="StyleMarchantXref" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StyleMast__Buyer__3F466844" Association="Self.FK__StyleMast__Buyer__3F466844">
+            <End Role="Buyer" EntitySet="Buyer" />
+            <End Role="StyleMaster" EntitySet="StyleMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StyleMast__Creat__4316F928" Association="Self.FK__StyleMast__Creat__4316F928">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="StyleMaster" EntitySet="StyleMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StyleMast__Fabri__46E78A0C" Association="Self.FK__StyleMast__Fabri__46E78A0C">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="StyleMaster" EntitySet="StyleMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StyleMast__Garme__412EB0B6" Association="Self.FK__StyleMast__Garme__412EB0B6">
+            <End Role="LookUp" EntitySet="LookUp" />
+            <End Role="StyleMaster" EntitySet="StyleMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StyleMast__Garme__47DBAE45" Association="Self.FK__StyleMast__Garme__47DBAE45">
+            <End Role="TypeCdDmt" EntitySet="TypeCdDmt" />
+            <End Role="StyleMaster" EntitySet="StyleMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StyleMast__March__3E52440B" Association="Self.FK__StyleMast__March__3E52440B">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="StyleMaster" EntitySet="StyleMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StyleMast__Order__44FF419A" Association="Self.FK__StyleMast__Order__44FF419A">
+            <End Role="TypeCdDmt" EntitySet="TypeCdDmt" />
+            <End Role="StyleMaster" EntitySet="StyleMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StyleMast__Sampl__4222D4EF" Association="Self.FK__StyleMast__Sampl__4222D4EF">
+            <End Role="TypeCdDmt" EntitySet="TypeCdDmt" />
+            <End Role="StyleMaster" EntitySet="StyleMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StyleMast__Sampl__45F365D3" Association="Self.FK__StyleMast__Sampl__45F365D3">
+            <End Role="TypeCdDmt" EntitySet="TypeCdDmt" />
+            <End Role="StyleMaster" EntitySet="StyleMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StyleMast__Seaso__403A8C7D" Association="Self.FK__StyleMast__Seaso__403A8C7D">
+            <End Role="LookUp" EntitySet="LookUp" />
+            <End Role="StyleMaster" EntitySet="StyleMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StyleMast__Updat__440B1D61" Association="Self.FK__StyleMast__Updat__440B1D61">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="StyleMaster" EntitySet="StyleMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StyleMate__Creat__628FA481" Association="Self.FK__StyleMate__Creat__628FA481">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="StyleMaterImages" EntitySet="StyleMaterImages" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StyleMate__Style__6477ECF3" Association="Self.FK__StyleMate__Style__6477ECF3">
+            <End Role="StyleMaster" EntitySet="StyleMaster" />
+            <End Role="StyleMaterImages" EntitySet="StyleMaterImages" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StyleMate__Updat__6383C8BA" Association="Self.FK__StyleMate__Updat__6383C8BA">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="StyleMaterImages" EntitySet="StyleMaterImages" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Fabric_DesignModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AspNetUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AlternateMobileNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DepartmentId" Type="Int32" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="AccessFailedCount" Type="Int32" />
+          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="ReportingManager" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FactoryId" Type="Int32" Nullable="false" />
+          </EntityType>
+        <EntityType Name="Buyer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BuyerName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Countryid" Type="Int32" />
+          <Property Name="CreatedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="BuyingHouseId" Type="Int32" />
+          <Property Name="CommissionTypeId" Type="Int32" />
+          <Property Name="CommissionPercentage" Type="Double" />
+        </EntityType>
+        <EntityType Name="ClassType">
+          <Key>
+            <PropertyRef Name="ClassTypeId" />
+          </Key>
+          <Property Name="ClassTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedbyUserId" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UPdatedbyUserId" Type="Int32" />
+          <Property Name="UPdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="CountryCurrency">
+          <Key>
+            <PropertyRef Name="CountryId" />
+          </Key>
+          <Property Name="CountryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CountryName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="CountryCode" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="CurrencyType" Type="Int32" />
+          <Property Name="ConversionRate" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="CreatedByUserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedByUserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="FactoryList">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FactoryName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="125" FixedLength="false" Unicode="true" />
+          <Property Name="State" Type="Int32" />
+          <Property Name="Country" Type="Int32" />
+          <Property Name="CreatedByUserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedByUserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="LookUp">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LookUpId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Remarks" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedByUserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedByUserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          </EntityType>
+        <EntityType Name="TypeCdDmt">
+          <Key>
+            <PropertyRef Name="TypeCdId" />
+          </Key>
+          <Property Name="TypeCdId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClassTypeId" Type="Int32" />
+          <Property Name="Desc" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TableName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ColumnName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SortOrder" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedByUserId" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedByUserId" Type="Int32" />
+          <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <Association Name="FK__CountryCu__Creat__34C8D9D1">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="0..1" />
+          <End Role="CountryCurrency" Type="Self.CountryCurrency" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CountryCurrency">
+              <PropertyRef Name="CreatedByUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CountryCu__Updat__35BCFE0A">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="0..1" />
+          <End Role="CountryCurrency" Type="Self.CountryCurrency" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CountryCurrency">
+              <PropertyRef Name="UpdatedByUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FactoryLi__Creat__5441852A">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="0..1" />
+          <End Role="FactoryList" Type="Self.FactoryList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FactoryList">
+              <PropertyRef Name="CreatedByUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FactoryLi__Updat__5535A963">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="0..1" />
+          <End Role="FactoryList" Type="Self.FactoryList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FactoryList">
+              <PropertyRef Name="UpdatedByUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Buyer__BuyingHou__398D8EEE">
+          <End Role="LookUp" Type="Self.LookUp" Multiplicity="0..1" />
+          <End Role="Buyer" Type="Self.Buyer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LookUp">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Buyer">
+              <PropertyRef Name="BuyingHouseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Buyer__Commissio__3A81B327">
+          <End Role="TypeCdDmt" Type="Self.TypeCdDmt" Multiplicity="0..1" />
+          <End Role="Buyer" Type="Self.Buyer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeCdDmt">
+              <PropertyRef Name="TypeCdId" />
+            </Principal>
+            <Dependent Role="Buyer">
+              <PropertyRef Name="CommissionTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Buyer__Countryid__38996AB5">
+          <End Role="CountryCurrency" Type="Self.CountryCurrency" Multiplicity="0..1" />
+          <End Role="Buyer" Type="Self.Buyer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CountryCurrency">
+              <PropertyRef Name="CountryId" />
+            </Principal>
+            <Dependent Role="Buyer">
+              <PropertyRef Name="Countryid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CountryCu__Curre__33D4B598">
+          <End Role="TypeCdDmt" Type="Self.TypeCdDmt" Multiplicity="0..1" />
+          <End Role="CountryCurrency" Type="Self.CountryCurrency" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeCdDmt">
+              <PropertyRef Name="TypeCdId" />
+            </Principal>
+            <Dependent Role="CountryCurrency">
+              <PropertyRef Name="CurrencyType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FactoryLi__Count__534D60F1">
+          <End Role="CountryCurrency" Type="Self.CountryCurrency" Multiplicity="0..1" />
+          <End Role="FactoryList" Type="Self.FactoryList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CountryCurrency">
+              <PropertyRef Name="CountryId" />
+            </Principal>
+            <Dependent Role="FactoryList">
+              <PropertyRef Name="Country" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Fabric_DesignEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUser" />
+          <EntitySet Name="Buyers" EntityType="Self.Buyer" />
+          <EntitySet Name="ClassTypes" EntityType="Self.ClassType" />
+          <EntitySet Name="CountryCurrencies" EntityType="Self.CountryCurrency" />
+          <EntitySet Name="FactoryLists" EntityType="Self.FactoryList" />
+          <EntitySet Name="LookUps" EntityType="Self.LookUp" />
+          <EntitySet Name="TypeCdDmts" EntityType="Self.TypeCdDmt" />
+          <AssociationSet Name="FK__CountryCu__Creat__34C8D9D1" Association="Self.FK__CountryCu__Creat__34C8D9D1">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="CountryCurrency" EntitySet="CountryCurrencies" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CountryCu__Updat__35BCFE0A" Association="Self.FK__CountryCu__Updat__35BCFE0A">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="CountryCurrency" EntitySet="CountryCurrencies" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FactoryLi__Creat__5441852A" Association="Self.FK__FactoryLi__Creat__5441852A">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="FactoryList" EntitySet="FactoryLists" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FactoryLi__Updat__5535A963" Association="Self.FK__FactoryLi__Updat__5535A963">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="FactoryList" EntitySet="FactoryLists" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Buyer__BuyingHou__398D8EEE" Association="Self.FK__Buyer__BuyingHou__398D8EEE">
+            <End Role="LookUp" EntitySet="LookUps" />
+            <End Role="Buyer" EntitySet="Buyers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Buyer__Commissio__3A81B327" Association="Self.FK__Buyer__Commissio__3A81B327">
+            <End Role="TypeCdDmt" EntitySet="TypeCdDmts" />
+            <End Role="Buyer" EntitySet="Buyers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Buyer__Countryid__38996AB5" Association="Self.FK__Buyer__Countryid__38996AB5">
+            <End Role="CountryCurrency" EntitySet="CountryCurrencies" />
+            <End Role="Buyer" EntitySet="Buyers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CountryCu__Curre__33D4B598" Association="Self.FK__CountryCu__Curre__33D4B598">
+            <End Role="TypeCdDmt" EntitySet="TypeCdDmts" />
+            <End Role="CountryCurrency" EntitySet="CountryCurrencies" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FactoryLi__Count__534D60F1" Association="Self.FK__FactoryLi__Count__534D60F1">
+            <End Role="CountryCurrency" EntitySet="CountryCurrencies" />
+            <End Role="FactoryList" EntitySet="FactoryLists" />
+          </AssociationSet>
+          <FunctionImport Name="GetLookkupSP" ReturnType="Collection(Fabric_DesignModel.GetLookkupSP_Result)" />
+          <FunctionImport Name="GetStyleMaster" ReturnType="Collection(Fabric_DesignModel.GetStyleMaster_Result)" />
+          <FunctionImport Name="GetTypecddmt" ReturnType="Collection(Fabric_DesignModel.GetTypecddmt_Result)" />
+          <FunctionImport Name="SP_GetUsers" ReturnType="Collection(Fabric_DesignModel.SP_GetUsers_Result)" />
+          <EntitySet Name="StyleMarchantXrefs" EntityType="Fabric_DesignModel.StyleMarchantXref" />
+          <EntitySet Name="StyleMaterImages" EntityType="Fabric_DesignModel.StyleMaterImage" />
+          <AssociationSet Name="FK__StyleMarc__March__5EBF139D" Association="Fabric_DesignModel.FK__StyleMarc__March__5EBF139D">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="StyleMarchantXref" EntitySet="StyleMarchantXrefs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StyleMate__Creat__628FA481" Association="Fabric_DesignModel.FK__StyleMate__Creat__628FA481">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="StyleMaterImage" EntitySet="StyleMaterImages" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StyleMate__Updat__6383C8BA" Association="Fabric_DesignModel.FK__StyleMate__Updat__6383C8BA">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="StyleMaterImage" EntitySet="StyleMaterImages" />
+          </AssociationSet>
+          <FunctionImport Name="GetCountry" ReturnType="Collection(Fabric_DesignModel.GetCountry_Result)" />
+          <FunctionImport Name="GetLookUp" ReturnType="Collection(Fabric_DesignModel.GetLookUp_Result)" />
+          <FunctionImport Name="GetCountrySP" ReturnType="Collection(Fabric_DesignModel.GetCountrySP_Result)" />
+          <EntitySet Name="StateMasters" EntityType="Fabric_DesignModel.StateMaster" />
+          <AssociationSet Name="FK__StateMast__Creat__4E88ABD4" Association="Fabric_DesignModel.FK__StateMast__Creat__4E88ABD4">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="StateMaster" EntitySet="StateMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StateMast__Updat__4F7CD00D" Association="Fabric_DesignModel.FK__StateMast__Updat__4F7CD00D">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="StateMaster" EntitySet="StateMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StateMast__Count__4D94879B" Association="Fabric_DesignModel.FK__StateMast__Count__4D94879B">
+            <End Role="CountryCurrency" EntitySet="CountryCurrencies" />
+            <End Role="StateMaster" EntitySet="StateMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FactoryLi__State__52593CB8" Association="Fabric_DesignModel.FK__FactoryLi__State__52593CB8">
+            <End Role="StateMaster" EntitySet="StateMasters" />
+            <End Role="FactoryList" EntitySet="FactoryLists" />
+          </AssociationSet>
+          <FunctionImport Name="GetState" ReturnType="Collection(Fabric_DesignModel.GetState_Result)" />
+          <FunctionImport Name="GetBuyer" ReturnType="Collection(Fabric_DesignModel.GetBuyer_Result)" />
+          <EntitySet Name="StyleMasters" EntityType="Fabric_DesignModel.StyleMaster" />
+          <AssociationSet Name="FK__StyleMast__Creat__4316F928" Association="Fabric_DesignModel.FK__StyleMast__Creat__4316F928">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="StyleMaster" EntitySet="StyleMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StyleMast__Fabri__46E78A0C" Association="Fabric_DesignModel.FK__StyleMast__Fabri__46E78A0C">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="StyleMaster" EntitySet="StyleMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StyleMast__March__3E52440B" Association="Fabric_DesignModel.FK__StyleMast__March__3E52440B">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="StyleMaster" EntitySet="StyleMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StyleMast__Updat__440B1D61" Association="Fabric_DesignModel.FK__StyleMast__Updat__440B1D61">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="StyleMaster" EntitySet="StyleMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StyleMast__Buyer__3F466844" Association="Fabric_DesignModel.FK__StyleMast__Buyer__3F466844">
+            <End Role="Buyer" EntitySet="Buyers" />
+            <End Role="StyleMaster" EntitySet="StyleMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StyleMast__Garme__412EB0B6" Association="Fabric_DesignModel.FK__StyleMast__Garme__412EB0B6">
+            <End Role="LookUp" EntitySet="LookUps" />
+            <End Role="StyleMaster" EntitySet="StyleMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StyleMast__Seaso__403A8C7D" Association="Fabric_DesignModel.FK__StyleMast__Seaso__403A8C7D">
+            <End Role="LookUp" EntitySet="LookUps" />
+            <End Role="StyleMaster" EntitySet="StyleMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StyleMarc__Style__5FB337D6" Association="Fabric_DesignModel.FK__StyleMarc__Style__5FB337D6">
+            <End Role="StyleMaster" EntitySet="StyleMasters" />
+            <End Role="StyleMarchantXref" EntitySet="StyleMarchantXrefs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StyleMast__Garme__47DBAE45" Association="Fabric_DesignModel.FK__StyleMast__Garme__47DBAE45">
+            <End Role="TypeCdDmt" EntitySet="TypeCdDmts" />
+            <End Role="StyleMaster" EntitySet="StyleMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StyleMast__Order__44FF419A" Association="Fabric_DesignModel.FK__StyleMast__Order__44FF419A">
+            <End Role="TypeCdDmt" EntitySet="TypeCdDmts" />
+            <End Role="StyleMaster" EntitySet="StyleMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StyleMast__Sampl__4222D4EF" Association="Fabric_DesignModel.FK__StyleMast__Sampl__4222D4EF">
+            <End Role="TypeCdDmt" EntitySet="TypeCdDmts" />
+            <End Role="StyleMaster" EntitySet="StyleMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StyleMast__Sampl__45F365D3" Association="Fabric_DesignModel.FK__StyleMast__Sampl__45F365D3">
+            <End Role="TypeCdDmt" EntitySet="TypeCdDmts" />
+            <End Role="StyleMaster" EntitySet="StyleMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StyleMate__Style__6477ECF3" Association="Fabric_DesignModel.FK__StyleMate__Style__6477ECF3">
+            <End Role="StyleMaster" EntitySet="StyleMasters" />
+            <End Role="StyleMaterImage" EntitySet="StyleMaterImages" />
+          </AssociationSet>
+          <FunctionImport Name="Getgarmenttypewithid" ReturnType="Collection(Fabric_DesignModel.Getgarmenttypewithid_Result)">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetOrdertypewithid" ReturnType="Collection(Fabric_DesignModel.GetOrdertypewithid_Result)">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Getseasonwithid" ReturnType="Collection(Fabric_DesignModel.Getseasonwithid_Result)">
+          <Parameter Name="LookUpId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Garmentprocesswithid" ReturnType="Collection(Fabric_DesignModel.Garmentprocesswithid_Result)">
+          <Parameter Name="GarmentprocessId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetSampletypewithid" ReturnType="Collection(Fabric_DesignModel.GetSampletypewithid_Result)">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetStyleMasterData" ReturnType="Collection(Fabric_DesignModel.GetStyleMasterData_Result)" />
+          </EntityContainer>
+        <ComplexType Name="GetLookkupSP_Result">
+          <Property Type="Int32" Name="TypeCdId" Nullable="false" />
+          <Property Type="String" Name="Type" Nullable="false" MaxLength="255" />
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="Remarks" Nullable="true" MaxLength="1000" />
+          <Property Type="Boolean" Name="IsActive" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="GetStyleMaster_Result">
+          <Property Type="String" Name="UserName" Nullable="false" MaxLength="256" />
+          <Property Type="String" Name="BuyerStyleNumber" Nullable="false" MaxLength="123" />
+          <Property Type="String" Name="BuyerName" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="Season" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="GarmentType" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="GarmentProcess" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="TechPackName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="TechpackFile" Nullable="true" MaxLength="255" />
+          <Property Type="DateTime" Name="TechPackSampleReceivedDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="SamplingType" Nullable="false" MaxLength="255" />
+          <Property Type="DateTime" Name="ExpectedSubmittedDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="OrderType" Nullable="false" MaxLength="255" />
+          <Property Type="Int32" Name="ExpectedOrderQty" Nullable="true" />
+          <Property Type="DateTime" Name="ExpectedOrderDate" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="GetTypecddmt_Result">
+          <Property Type="Int32" Name="TypeCdId" Nullable="false" />
+          <Property Type="Int32" Name="ClassTypeId" Nullable="true" />
+          <Property Type="String" Name="Desc" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="TableName" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="ColumnName" Nullable="false" MaxLength="255" />
+          <Property Type="Int32" Name="SortOrder" Nullable="true" />
+          <Property Type="Boolean" Name="IsActive" Nullable="false" />
+          <Property Type="Int32" Name="CreatedByUserId" Nullable="true" />
+          <Property Type="DateTime" Name="CreatedDate" Nullable="false" Precision="23" />
+          <Property Type="Int32" Name="UpdatedByUserId" Nullable="true" />
+          <Property Type="DateTime" Name="UpdatedDate" Nullable="false" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="SP_GetUsers_Result">
+          <Property Type="String" Name="UserName" Nullable="false" MaxLength="256" />
+          <Property Type="String" Name="FullName" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="LastName" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="256" />
+          <Property Type="String" Name="MobileNumber" Nullable="true" />
+          <Property Type="Int32" Name="DepartmentId" Nullable="false" />
+          <Property Type="String" Name="DepartmentName" Nullable="false" MaxLength="255" />
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="FactoryName" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="ReportingManager" Nullable="true" />
+          <Property Type="Boolean" Name="IsActive" Nullable="false" />
+        </ComplexType>
+        <EntityType Name="StyleMarchantXref">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MarchantId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="StyleMasterId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="StyleMaterImage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FileName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="FileLocation" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="FileExtension" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="CreatedBY" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="BuyerStyleNumber" Type="Int32" />
+          <Property Name="StyleId" Type="Int32" />
+        </EntityType>
+        <Association Name="FK__StyleMarc__March__5EBF139D">
+          <End Type="Fabric_DesignModel.AspNetUser" Role="AspNetUser" Multiplicity="0..1" />
+          <End Type="Fabric_DesignModel.StyleMarchantXref" Role="StyleMarchantXref" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StyleMarchantXref">
+              <PropertyRef Name="MarchantId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StyleMate__Creat__628FA481">
+          <End Type="Fabric_DesignModel.AspNetUser" Role="AspNetUser" Multiplicity="0..1" />
+          <End Type="Fabric_DesignModel.StyleMaterImage" Role="StyleMaterImage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StyleMaterImage">
+              <PropertyRef Name="CreatedBY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StyleMate__Updat__6383C8BA">
+          <End Type="Fabric_DesignModel.AspNetUser" Role="AspNetUser" Multiplicity="0..1" />
+          <End Type="Fabric_DesignModel.StyleMaterImage" Role="StyleMaterImage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StyleMaterImage">
+              <PropertyRef Name="UpdatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="GetCountry_Result">
+          <Property Type="String" Name="CountryName" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="CountryCode" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="CurrencyName" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="ConversionRate" Nullable="true" MaxLength="250" />
+          <Property Type="Boolean" Name="IsActive" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GetLookUp_Result">
+          <Property Type="String" Name="Desc" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="Remarks" Nullable="true" MaxLength="1000" />
+          <Property Type="Boolean" Name="IsActive" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="GetCountrySP_Result">
+          <Property Type="Int32" Name="CountryId" Nullable="false" />
+          <Property Type="String" Name="CountryName" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="CountryCode" Nullable="true" MaxLength="250" />
+          <Property Type="Int32" Name="CurrencyType" Nullable="true" />
+          <Property Type="String" Name="currency" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="ConversionRate" Nullable="true" MaxLength="250" />
+          <Property Type="Boolean" Name="IsActive" Nullable="true" />
+        </ComplexType>
+        <EntityType Name="StateMaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CountryId" Type="Int32" />
+          <Property Name="State" Type="String" MaxLength="125" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedByUserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedByUserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="IGST" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="SGST" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="CGST" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Statecode" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK__StateMast__Creat__4E88ABD4">
+          <End Type="Fabric_DesignModel.AspNetUser" Role="AspNetUser" Multiplicity="0..1" />
+          <End Type="Fabric_DesignModel.StateMaster" Role="StateMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StateMaster">
+              <PropertyRef Name="CreatedByUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StateMast__Updat__4F7CD00D">
+          <End Type="Fabric_DesignModel.AspNetUser" Role="AspNetUser" Multiplicity="0..1" />
+          <End Type="Fabric_DesignModel.StateMaster" Role="StateMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StateMaster">
+              <PropertyRef Name="UpdatedByUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StateMast__Count__4D94879B">
+          <End Type="Fabric_DesignModel.CountryCurrency" Role="CountryCurrency" Multiplicity="0..1" />
+          <End Type="Fabric_DesignModel.StateMaster" Role="StateMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CountryCurrency">
+              <PropertyRef Name="CountryId" />
+            </Principal>
+            <Dependent Role="StateMaster">
+              <PropertyRef Name="CountryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FactoryLi__State__52593CB8">
+          <End Type="Fabric_DesignModel.StateMaster" Role="StateMaster" Multiplicity="0..1" />
+          <End Type="Fabric_DesignModel.FactoryList" Role="FactoryList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StateMaster">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FactoryList">
+              <PropertyRef Name="State" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="GetState_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="State" Nullable="true" MaxLength="125" />
+          <Property Type="String" Name="Statecode" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="CountryId" Nullable="true" />
+          <Property Type="String" Name="CountryName" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="IGST" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="SGST" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="CGST" Nullable="true" MaxLength="128" />
+          <Property Type="Boolean" Name="IsActive" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="GetBuyer_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="BuyerName" Nullable="true" MaxLength="250" />
+          <Property Type="Int32" Name="BuyingHouseId" Nullable="true" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="255" />
+          <Property Type="Int32" Name="CountryId" Nullable="true" />
+          <Property Type="String" Name="CountryName" Nullable="true" MaxLength="250" />
+          <Property Type="Int32" Name="TypeCdId" Nullable="false" />
+          <Property Type="Int32" Name="CommissionTypeId" Nullable="true" />
+          <Property Type="String" Name="CommissionType" Nullable="false" MaxLength="255" />
+          <Property Type="Double" Name="CommissionPercentage" Nullable="true" />
+          <Property Type="Boolean" Name="IsActive" Nullable="true" />
+        </ComplexType>
+        <EntityType Name="StyleMaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BuyerStyleNumber" Type="String" Nullable="false" MaxLength="123" FixedLength="false" Unicode="false" />
+          <Property Name="MarchantId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="BuyerId" Type="Int32" Nullable="false" />
+          <Property Name="SeasonTypeId" Type="Int32" Nullable="false" />
+          <Property Name="GarmentTypeId" Type="Int32" Nullable="false" />
+          <Property Name="SampleTypeId" Type="Int32" />
+          <Property Name="TechPackName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="FileName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="FileLocation" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="FileExtension" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="NumberofPcs" Type="Int32" />
+          <Property Name="SampleSubmissionDate" Type="DateTime" Precision="3" />
+          <Property Name="ExpectedOrderQty" Type="Int32" />
+          <Property Name="ExpectedOrderDate" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="TechPackSampleReceivedDate" Type="DateTime" Precision="3" />
+          <Property Name="OrderTypeId" Type="Int32" />
+          <Property Name="SamplingStatusId" Type="Int32" />
+          <Property Name="FabricManagerId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="GarmentProcessId" Type="Int32" />
+          <Property Name="CostingVersionId" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="NoOfSamplesSentToBuyer" Type="Double" />
+          <Property Name="NoOfSamplesPaidFor" Type="Double" />
+          <Property Name="CostPerSample" Type="Double" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <Association Name="FK__StyleMast__Creat__4316F928">
+          <End Type="Fabric_DesignModel.AspNetUser" Role="AspNetUser" Multiplicity="0..1" />
+          <End Type="Fabric_DesignModel.StyleMaster" Role="StyleMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StyleMaster">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StyleMast__Fabri__46E78A0C">
+          <End Type="Fabric_DesignModel.AspNetUser" Role="AspNetUser" Multiplicity="0..1" />
+          <End Type="Fabric_DesignModel.StyleMaster" Role="StyleMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StyleMaster">
+              <PropertyRef Name="FabricManagerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StyleMast__March__3E52440B">
+          <End Type="Fabric_DesignModel.AspNetUser" Role="AspNetUser" Multiplicity="1" />
+          <End Type="Fabric_DesignModel.StyleMaster" Role="StyleMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StyleMaster">
+              <PropertyRef Name="MarchantId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StyleMast__Updat__440B1D61">
+          <End Type="Fabric_DesignModel.AspNetUser" Role="AspNetUser" Multiplicity="0..1" />
+          <End Type="Fabric_DesignModel.StyleMaster" Role="StyleMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StyleMaster">
+              <PropertyRef Name="UpdatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StyleMast__Buyer__3F466844">
+          <End Type="Fabric_DesignModel.Buyer" Role="Buyer" Multiplicity="1" />
+          <End Type="Fabric_DesignModel.StyleMaster" Role="StyleMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Buyer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StyleMaster">
+              <PropertyRef Name="BuyerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StyleMast__Garme__412EB0B6">
+          <End Type="Fabric_DesignModel.LookUp" Role="LookUp" Multiplicity="1" />
+          <End Type="Fabric_DesignModel.StyleMaster" Role="StyleMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LookUp">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StyleMaster">
+              <PropertyRef Name="GarmentTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StyleMast__Seaso__403A8C7D">
+          <End Type="Fabric_DesignModel.LookUp" Role="LookUp" Multiplicity="1" />
+          <End Type="Fabric_DesignModel.StyleMaster" Role="StyleMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LookUp">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StyleMaster">
+              <PropertyRef Name="SeasonTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StyleMarc__Style__5FB337D6">
+          <End Type="Fabric_DesignModel.StyleMaster" Role="StyleMaster" Multiplicity="0..1" />
+          <End Type="Fabric_DesignModel.StyleMarchantXref" Role="StyleMarchantXref" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StyleMaster">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StyleMarchantXref">
+              <PropertyRef Name="StyleMasterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StyleMast__Garme__47DBAE45">
+          <End Type="Fabric_DesignModel.TypeCdDmt" Role="TypeCdDmt" Multiplicity="0..1" />
+          <End Type="Fabric_DesignModel.StyleMaster" Role="StyleMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeCdDmt">
+              <PropertyRef Name="TypeCdId" />
+            </Principal>
+            <Dependent Role="StyleMaster">
+              <PropertyRef Name="GarmentProcessId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StyleMast__Order__44FF419A">
+          <End Type="Fabric_DesignModel.TypeCdDmt" Role="TypeCdDmt" Multiplicity="0..1" />
+          <End Type="Fabric_DesignModel.StyleMaster" Role="StyleMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeCdDmt">
+              <PropertyRef Name="TypeCdId" />
+            </Principal>
+            <Dependent Role="StyleMaster">
+              <PropertyRef Name="OrderTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StyleMast__Sampl__4222D4EF">
+          <End Type="Fabric_DesignModel.TypeCdDmt" Role="TypeCdDmt" Multiplicity="0..1" />
+          <End Type="Fabric_DesignModel.StyleMaster" Role="StyleMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeCdDmt">
+              <PropertyRef Name="TypeCdId" />
+            </Principal>
+            <Dependent Role="StyleMaster">
+              <PropertyRef Name="SampleTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StyleMast__Sampl__45F365D3">
+          <End Type="Fabric_DesignModel.TypeCdDmt" Role="TypeCdDmt" Multiplicity="0..1" />
+          <End Type="Fabric_DesignModel.StyleMaster" Role="StyleMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeCdDmt">
+              <PropertyRef Name="TypeCdId" />
+            </Principal>
+            <Dependent Role="StyleMaster">
+              <PropertyRef Name="SamplingStatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StyleMate__Style__6477ECF3">
+          <End Type="Fabric_DesignModel.StyleMaster" Role="StyleMaster" Multiplicity="0..1" />
+          <End Type="Fabric_DesignModel.StyleMaterImage" Role="StyleMaterImage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StyleMaster">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StyleMaterImage">
+              <PropertyRef Name="StyleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="Getgarmenttypewithid_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="Int32" Name="GarmentTypeId" Nullable="false" />
+          <Property Type="String" Name="GarmentTypeName" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="Remarks" Nullable="true" MaxLength="1000" />
+          <Property Type="Boolean" Name="IsActive" Nullable="false" />
+          <Property Type="String" Name="CreatedByUserId" Nullable="true" MaxLength="128" />
+          <Property Type="DateTime" Name="CreatedDate" Nullable="false" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="GetOrdertypewithid_Result">
+          <Property Type="Int32" Name="TypeCdId" Nullable="false" />
+          <Property Type="Int32" Name="OrderTypeId" Nullable="true" />
+          <Property Type="String" Name="OrderTypeDesc" Nullable="false" MaxLength="255" />
+        </ComplexType>
+        <ComplexType Name="Getseasonwithid_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="Int32" Name="SeasonTypeId" Nullable="false" />
+          <Property Type="String" Name="SeasonTypeName" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="Remarks" Nullable="true" MaxLength="1000" />
+          <Property Type="Boolean" Name="IsActive" Nullable="false" />
+          <Property Type="String" Name="CreatedByUserId" Nullable="true" MaxLength="128" />
+          <Property Type="DateTime" Name="CreatedDate" Nullable="false" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="Garmentprocesswithid_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="Int32" Name="GarmentProcessId" Nullable="false" />
+          <Property Type="String" Name="GarmentProcessDesc" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="Remarks" Nullable="true" MaxLength="1000" />
+          <Property Type="Boolean" Name="IsActive" Nullable="false" />
+          <Property Type="String" Name="CreatedByUserId" Nullable="true" MaxLength="128" />
+          <Property Type="DateTime" Name="CreatedDate" Nullable="false" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="GetSampletypewithid_Result">
+          <Property Type="Int32" Name="TypeCdId" Nullable="false" />
+          <Property Type="Int32" Name="SampleTypeId" Nullable="true" />
+          <Property Type="String" Name="SampleTypeDesc" Nullable="false" MaxLength="255" />
+        </ComplexType>
+        <ComplexType Name="GetStyleMasterData_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="MarchantId" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="UserName" Nullable="true" MaxLength="256" />
+          <Property Type="String" Name="BuyerStyleNumber" Nullable="false" MaxLength="123" />
+          <Property Type="Int32" Name="BuyerId" Nullable="false" />
+          <Property Type="String" Name="BuyerName" Nullable="true" MaxLength="250" />
+          <Property Type="Int32" Name="SeasonTypeId" Nullable="false" />
+          <Property Type="String" Name="SeasonTypeName" Nullable="true" MaxLength="255" />
+          <Property Type="Int32" Name="GarmentTypeId" Nullable="false" />
+          <Property Type="String" Name="GarmentTypeName" Nullable="true" MaxLength="255" />
+          <Property Type="Int32" Name="GarmentProcessId" Nullable="true" />
+          <Property Type="String" Name="GarmentProcessDesc" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="TechPackName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="FileName" Nullable="true" MaxLength="255" />
+          <Property Type="DateTime" Name="TechPackSampleReceivedDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Description" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="SampleTypeId" Nullable="true" />
+          <Property Type="String" Name="SampleTypeDesc" Nullable="true" MaxLength="255" />
+          <Property Type="Int32" Name="OrderTypeId" Nullable="true" />
+          <Property Type="String" Name="OrderTypeDesc" Nullable="true" MaxLength="255" />
+          <Property Type="Int32" Name="ExpectedOrderQty" Nullable="true" />
+          <Property Type="DateTime" Name="ExpectedOrderDate" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="SampleSubmissionDate" Nullable="true" Precision="23" />
+          <Property Type="Boolean" Name="IsActive" Nullable="false" />
+        </ComplexType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Fabric_DesignModelStoreContainer" CdmEntityContainer="Fabric_DesignEntities1">
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="Fabric_DesignModel.AspNetUser">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="AlternateMobileNumber" ColumnName="AlternateMobileNumber" />
+                <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="ReportingManager" ColumnName="ReportingManager" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="FactoryId" ColumnName="FactoryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Buyers">
+            <EntityTypeMapping TypeName="Fabric_DesignModel.Buyer">
+              <MappingFragment StoreEntitySet="Buyer">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="BuyerName" ColumnName="BuyerName" />
+                <ScalarProperty Name="Countryid" ColumnName="Countryid" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="BuyingHouseId" ColumnName="BuyingHouseId" />
+                <ScalarProperty Name="CommissionTypeId" ColumnName="CommissionTypeId" />
+                <ScalarProperty Name="CommissionPercentage" ColumnName="CommissionPercentage" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClassTypes">
+            <EntityTypeMapping TypeName="Fabric_DesignModel.ClassType">
+              <MappingFragment StoreEntitySet="ClassType">
+                <ScalarProperty Name="ClassTypeId" ColumnName="ClassTypeId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedbyUserId" ColumnName="CreatedbyUserId" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="UPdatedbyUserId" ColumnName="UPdatedbyUserId" />
+                <ScalarProperty Name="UPdatedDate" ColumnName="UPdatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CountryCurrencies">
+            <EntityTypeMapping TypeName="Fabric_DesignModel.CountryCurrency">
+              <MappingFragment StoreEntitySet="CountryCurrency">
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+                <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+                <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+                <ScalarProperty Name="CurrencyType" ColumnName="CurrencyType" />
+                <ScalarProperty Name="ConversionRate" ColumnName="ConversionRate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedByUserId" ColumnName="CreatedByUserId" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="UpdatedByUserId" ColumnName="UpdatedByUserId" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FactoryLists">
+            <EntityTypeMapping TypeName="Fabric_DesignModel.FactoryList">
+              <MappingFragment StoreEntitySet="FactoryList">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FactoryName" ColumnName="FactoryName" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="CreatedByUserId" ColumnName="CreatedByUserId" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="UpdatedByUserId" ColumnName="UpdatedByUserId" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LookUps">
+            <EntityTypeMapping TypeName="Fabric_DesignModel.LookUp">
+              <MappingFragment StoreEntitySet="LookUp">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="LookUpId" ColumnName="LookUpId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedByUserId" ColumnName="CreatedByUserId" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="UpdatedByUserId" ColumnName="UpdatedByUserId" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TypeCdDmts">
+            <EntityTypeMapping TypeName="Fabric_DesignModel.TypeCdDmt">
+              <MappingFragment StoreEntitySet="TypeCdDmt">
+                <ScalarProperty Name="TypeCdId" ColumnName="TypeCdId" />
+                <ScalarProperty Name="ClassTypeId" ColumnName="ClassTypeId" />
+                <ScalarProperty Name="Desc" ColumnName="Desc" />
+                <ScalarProperty Name="TableName" ColumnName="TableName" />
+                <ScalarProperty Name="ColumnName" ColumnName="ColumnName" />
+                <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedByUserId" ColumnName="CreatedByUserId" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="UpdatedByUserId" ColumnName="UpdatedByUserId" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetLookkupSP" FunctionName="Fabric_DesignModel.Store.GetLookkupSP">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Fabric_DesignModel.GetLookkupSP_Result">
+                <ScalarProperty Name="TypeCdId" ColumnName="TypeCdId" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetStyleMaster" FunctionName="Fabric_DesignModel.Store.GetStyleMaster">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Fabric_DesignModel.GetStyleMaster_Result">
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="BuyerStyleNumber" ColumnName="BuyerStyleNumber" />
+                <ScalarProperty Name="BuyerName" ColumnName="BuyerName" />
+                <ScalarProperty Name="Season" ColumnName="Season" />
+                <ScalarProperty Name="GarmentType" ColumnName="GarmentType" />
+                <ScalarProperty Name="GarmentProcess" ColumnName="GarmentProcess" />
+                <ScalarProperty Name="TechPackName" ColumnName="TechPackName" />
+                <ScalarProperty Name="TechpackFile" ColumnName="TechpackFile" />
+                <ScalarProperty Name="TechPackSampleReceivedDate" ColumnName="TechPackSampleReceivedDate" />
+                <ScalarProperty Name="SamplingType" ColumnName="SamplingType" />
+                <ScalarProperty Name="ExpectedSubmittedDate" ColumnName="ExpectedSubmittedDate" />
+                <ScalarProperty Name="OrderType" ColumnName="OrderType" />
+                <ScalarProperty Name="ExpectedOrderQty" ColumnName="ExpectedOrderQty" />
+                <ScalarProperty Name="ExpectedOrderDate" ColumnName="ExpectedOrderDate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetTypecddmt" FunctionName="Fabric_DesignModel.Store.GetTypecddmt">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Fabric_DesignModel.GetTypecddmt_Result">
+                <ScalarProperty Name="TypeCdId" ColumnName="TypeCdId" />
+                <ScalarProperty Name="ClassTypeId" ColumnName="ClassTypeId" />
+                <ScalarProperty Name="Desc" ColumnName="Desc" />
+                <ScalarProperty Name="TableName" ColumnName="TableName" />
+                <ScalarProperty Name="ColumnName" ColumnName="ColumnName" />
+                <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedByUserId" ColumnName="CreatedByUserId" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="UpdatedByUserId" ColumnName="UpdatedByUserId" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_GetUsers" FunctionName="Fabric_DesignModel.Store.SP_GetUsers">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Fabric_DesignModel.SP_GetUsers_Result">
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+                <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
+                <ScalarProperty Name="DepartmentName" ColumnName="DepartmentName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FactoryName" ColumnName="FactoryName" />
+                <ScalarProperty Name="ReportingManager" ColumnName="ReportingManager" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="StyleMarchantXrefs">
+            <EntityTypeMapping TypeName="Fabric_DesignModel.StyleMarchantXref">
+              <MappingFragment StoreEntitySet="StyleMarchantXref">
+                <ScalarProperty Name="StyleMasterId" ColumnName="StyleMasterId" />
+                <ScalarProperty Name="MarchantId" ColumnName="MarchantId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StyleMaterImages">
+            <EntityTypeMapping TypeName="Fabric_DesignModel.StyleMaterImage">
+              <MappingFragment StoreEntitySet="StyleMaterImages">
+                <ScalarProperty Name="StyleId" ColumnName="StyleId" />
+                <ScalarProperty Name="BuyerStyleNumber" ColumnName="BuyerStyleNumber" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBY" ColumnName="CreatedBY" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="FileExtension" ColumnName="FileExtension" />
+                <ScalarProperty Name="FileLocation" ColumnName="FileLocation" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetCountry" FunctionName="Fabric_DesignModel.Store.GetCountry">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Fabric_DesignModel.GetCountry_Result">
+                <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+                <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+                <ScalarProperty Name="CurrencyName" ColumnName="CurrencyName" />
+                <ScalarProperty Name="ConversionRate" ColumnName="ConversionRate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetLookUp" FunctionName="Fabric_DesignModel.Store.GetLookUp">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Fabric_DesignModel.GetLookUp_Result">
+                <ScalarProperty Name="Desc" ColumnName="Desc" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetCountrySP" FunctionName="Fabric_DesignModel.Store.GetCountrySP">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Fabric_DesignModel.GetCountrySP_Result">
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+                <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+                <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+                <ScalarProperty Name="CurrencyType" ColumnName="CurrencyType" />
+                <ScalarProperty Name="currency" ColumnName="currency" />
+                <ScalarProperty Name="ConversionRate" ColumnName="ConversionRate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="StateMasters">
+            <EntityTypeMapping TypeName="Fabric_DesignModel.StateMaster">
+              <MappingFragment StoreEntitySet="StateMaster">
+                <ScalarProperty Name="Statecode" ColumnName="Statecode" />
+                <ScalarProperty Name="CGST" ColumnName="CGST" />
+                <ScalarProperty Name="SGST" ColumnName="SGST" />
+                <ScalarProperty Name="IGST" ColumnName="IGST" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="UpdatedByUserId" ColumnName="UpdatedByUserId" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedByUserId" ColumnName="CreatedByUserId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetState" FunctionName="Fabric_DesignModel.Store.GetState">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Fabric_DesignModel.GetState_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Statecode" ColumnName="Statecode" />
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+                <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+                <ScalarProperty Name="IGST" ColumnName="IGST" />
+                <ScalarProperty Name="SGST" ColumnName="SGST" />
+                <ScalarProperty Name="CGST" ColumnName="CGST" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetBuyer" FunctionName="Fabric_DesignModel.Store.GetBuyer">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Fabric_DesignModel.GetBuyer_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="BuyerName" ColumnName="BuyerName" />
+                <ScalarProperty Name="BuyingHouseId" ColumnName="BuyingHouseId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+                <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+                <ScalarProperty Name="TypeCdId" ColumnName="TypeCdId" />
+                <ScalarProperty Name="CommissionTypeId" ColumnName="CommissionTypeId" />
+                <ScalarProperty Name="CommissionType" ColumnName="CommissionType" />
+                <ScalarProperty Name="CommissionPercentage" ColumnName="CommissionPercentage" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="StyleMasters">
+            <EntityTypeMapping TypeName="Fabric_DesignModel.StyleMaster">
+              <MappingFragment StoreEntitySet="StyleMaster">
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="CostPerSample" ColumnName="CostPerSample" />
+                <ScalarProperty Name="NoOfSamplesPaidFor" ColumnName="NoOfSamplesPaidFor" />
+                <ScalarProperty Name="NoOfSamplesSentToBuyer" ColumnName="NoOfSamplesSentToBuyer" />
+                <ScalarProperty Name="CostingVersionId" ColumnName="CostingVersionId" />
+                <ScalarProperty Name="GarmentProcessId" ColumnName="GarmentProcessId" />
+                <ScalarProperty Name="FabricManagerId" ColumnName="FabricManagerId" />
+                <ScalarProperty Name="SamplingStatusId" ColumnName="SamplingStatusId" />
+                <ScalarProperty Name="OrderTypeId" ColumnName="OrderTypeId" />
+                <ScalarProperty Name="TechPackSampleReceivedDate" ColumnName="TechPackSampleReceivedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="ExpectedOrderDate" ColumnName="ExpectedOrderDate" />
+                <ScalarProperty Name="ExpectedOrderQty" ColumnName="ExpectedOrderQty" />
+                <ScalarProperty Name="SampleSubmissionDate" ColumnName="SampleSubmissionDate" />
+                <ScalarProperty Name="NumberofPcs" ColumnName="NumberofPcs" />
+                <ScalarProperty Name="FileExtension" ColumnName="FileExtension" />
+                <ScalarProperty Name="FileLocation" ColumnName="FileLocation" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="TechPackName" ColumnName="TechPackName" />
+                <ScalarProperty Name="SampleTypeId" ColumnName="SampleTypeId" />
+                <ScalarProperty Name="GarmentTypeId" ColumnName="GarmentTypeId" />
+                <ScalarProperty Name="SeasonTypeId" ColumnName="SeasonTypeId" />
+                <ScalarProperty Name="BuyerId" ColumnName="BuyerId" />
+                <ScalarProperty Name="MarchantId" ColumnName="MarchantId" />
+                <ScalarProperty Name="BuyerStyleNumber" ColumnName="BuyerStyleNumber" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="Getgarmenttypewithid" FunctionName="Fabric_DesignModel.Store.Getgarmenttypewithid">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Fabric_DesignModel.Getgarmenttypewithid_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="GarmentTypeId" ColumnName="GarmentTypeId" />
+                <ScalarProperty Name="GarmentTypeName" ColumnName="GarmentTypeName" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedByUserId" ColumnName="CreatedByUserId" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetOrdertypewithid" FunctionName="Fabric_DesignModel.Store.GetOrdertypewithid">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Fabric_DesignModel.GetOrdertypewithid_Result">
+                <ScalarProperty Name="TypeCdId" ColumnName="TypeCdId" />
+                <ScalarProperty Name="OrderTypeId" ColumnName="OrderTypeId" />
+                <ScalarProperty Name="OrderTypeDesc" ColumnName="OrderTypeDesc" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Getseasonwithid" FunctionName="Fabric_DesignModel.Store.Getseasonwithid">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Fabric_DesignModel.Getseasonwithid_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="SeasonTypeId" ColumnName="SeasonTypeId" />
+                <ScalarProperty Name="SeasonTypeName" ColumnName="SeasonTypeName" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedByUserId" ColumnName="CreatedByUserId" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Garmentprocesswithid" FunctionName="Fabric_DesignModel.Store.Garmentprocesswithid">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Fabric_DesignModel.Garmentprocesswithid_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="GarmentProcessId" ColumnName="GarmentProcessId" />
+                <ScalarProperty Name="GarmentProcessDesc" ColumnName="GarmentProcessDesc" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedByUserId" ColumnName="CreatedByUserId" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetSampletypewithid" FunctionName="Fabric_DesignModel.Store.GetSampletypewithid">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Fabric_DesignModel.GetSampletypewithid_Result">
+                <ScalarProperty Name="TypeCdId" ColumnName="TypeCdId" />
+                <ScalarProperty Name="SampleTypeId" ColumnName="SampleTypeId" />
+                <ScalarProperty Name="SampleTypeDesc" ColumnName="SampleTypeDesc" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetStyleMasterData" FunctionName="Fabric_DesignModel.Store.GetStyleMasterData">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Fabric_DesignModel.GetStyleMasterData_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="MarchantId" ColumnName="MarchantId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="BuyerStyleNumber" ColumnName="BuyerStyleNumber" />
+                <ScalarProperty Name="BuyerId" ColumnName="BuyerId" />
+                <ScalarProperty Name="BuyerName" ColumnName="BuyerName" />
+                <ScalarProperty Name="SeasonTypeId" ColumnName="SeasonTypeId" />
+                <ScalarProperty Name="SeasonTypeName" ColumnName="SeasonTypeName" />
+                <ScalarProperty Name="GarmentTypeId" ColumnName="GarmentTypeId" />
+                <ScalarProperty Name="GarmentTypeName" ColumnName="GarmentTypeName" />
+                <ScalarProperty Name="GarmentProcessId" ColumnName="GarmentProcessId" />
+                <ScalarProperty Name="GarmentProcessDesc" ColumnName="GarmentProcessDesc" />
+                <ScalarProperty Name="TechPackName" ColumnName="TechPackName" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="TechPackSampleReceivedDate" ColumnName="TechPackSampleReceivedDate" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="SampleTypeId" ColumnName="SampleTypeId" />
+                <ScalarProperty Name="SampleTypeDesc" ColumnName="SampleTypeDesc" />
+                <ScalarProperty Name="OrderTypeId" ColumnName="OrderTypeId" />
+                <ScalarProperty Name="OrderTypeDesc" ColumnName="OrderTypeDesc" />
+                <ScalarProperty Name="ExpectedOrderQty" ColumnName="ExpectedOrderQty" />
+                <ScalarProperty Name="ExpectedOrderDate" ColumnName="ExpectedOrderDate" />
+                <ScalarProperty Name="SampleSubmissionDate" ColumnName="SampleSubmissionDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
